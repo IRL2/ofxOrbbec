@@ -1,3 +1,5 @@
+#pragma once
+
 #include "ofMain.h"
 
 #include "libobsensor/ObSensor.hpp"
@@ -7,7 +9,7 @@
 
 //If you have ffmpeg / libavcodec included in your project uncomment below 
 //You can easily get the required libs from ofxFFmpegRTSP addon ( if you add it to your project )
-#define OFXORBBEC_DECODE_H264_H265
+// #define OFXORBBEC_DECODE_H264_H265
 
 // this allows us to decode the color video streams from Femto Mega over IP connection 
 #ifdef OFXORBBEC_DECODE_H264_H265

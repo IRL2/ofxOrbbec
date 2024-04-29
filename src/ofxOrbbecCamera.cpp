@@ -543,8 +543,10 @@ ofPixels ofxOrbbecCamera::processFrame(shared_ptr<ob::Frame> frame){
                 // depth frame pixel value multiply scale to get distance in millimeter
                 float scale = videoFrame->as<ob::DepthFrame>()->getValueScale();
 
-                // threshold to 5.46m
-                cv::threshold(rawMat, cvtMat, 5460.0f / scale, 0, cv::THRESH_TRUNC);
+                // original threshold from 0 to 5.46m
+                float _nearClip = 350.0f / scale;
+                float _farClip  = 4460.0f / scale;
+                cv::threshold(rawMat, cvtMat, _farClip, _nearClip, cv::THRESH_TRUNC);
                 cvtMat.convertTo(cvtMat, CV_8UC1, scale * 0.05);
                 rstMat = cvtMat;//cv::applyColorMap(cvtMat, rstMat, cv::COLORMAP_JET);
             }
