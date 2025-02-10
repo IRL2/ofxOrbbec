@@ -43,6 +43,7 @@ struct Settings{
     bool bDepth = false; 
     bool bPointCloud = false; 
     bool bPointCloudRGB = false; 
+	OBRotateDegreeType rotation = OB_ROTATE_DEGREE_0;
 };
 
 };

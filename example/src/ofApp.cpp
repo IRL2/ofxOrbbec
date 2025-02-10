@@ -7,6 +7,7 @@ void ofApp::setup(){
     auto deviceInfo = ofxOrbbecCamera::getDeviceList(); 
 
     settings.bColor = true; 
+    //settings.rotation = OB_ROTATE_DEGREE_90;
     settings.bDepth = true; 
     settings.bPointCloud = true; 
     //settings.depthFrameSize.format = OB_FORMAT_Y16;
@@ -17,7 +18,7 @@ void ofApp::setup(){
     //settings.ip = "192.168.50.70";
     
     orbbecCam.open(settings);
-    
+
 }
 
 //--------------------------------------------------------------

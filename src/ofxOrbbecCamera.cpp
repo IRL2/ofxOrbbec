@@ -216,6 +216,9 @@ bool ofxOrbbecCamera::open(ofxOrbbec::Settings aSettings){
 
             // Pass in the configuration and start the pipeline
             mPipe->start(config);
+            if (device->isPropertySupported(OB_PROP_DEPTH_ROTATE_INT, OB_PERMISSION_WRITE)) {
+                device->setIntProperty(OB_PROP_DEPTH_ROTATE_INT, aSettings.rotation);
+            }
 
             if( aSettings.bPointCloud || aSettings.bPointCloudRGB ){
                 auto cameraParam = mPipe->getCameraParam();
@@ -387,7 +390,6 @@ bool ofxOrbbecCamera::isFrameNewDepth(){
 bool ofxOrbbecCamera::isFrameNewColor(){
     return bNewFrameColor;
 }
-
 
 #ifdef OFXORBBEC_DECODE_H264_H265
 
@@ -664,3 +666,4 @@ void ofxOrbbecCamera::pointCloudToMesh(shared_ptr<ob::DepthFrame> depthFrame, sh
         }
     }
 }
+
